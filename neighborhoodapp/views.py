@@ -7,3 +7,13 @@ from django.contrib.auth.models import User
 def index(request):
     neighbourhoods = Neighbourhood.objects.all()
     return render(request, 'index.html', {"neighbourhoods": neighbourhoods})
+
+def view_neighbourhood(request, id):
+    neighbourhood = Neighbourhood.objects.get(id=id)
+    business = Business.objects.filter(business_neighbourhood=id)
+    post = Post.objects.filter(neighbourhood=id)
+
+    # current_user = request.user
+    return render(request, 'view-neighbourhood.html',  {
+        'neighbourhood': neighbourhood,'business':business,'post': post
+    })
