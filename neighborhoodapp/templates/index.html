@@ -31,6 +31,14 @@
     h1 {
         font-weight: 600;
     }
+
+    .footer{
+    background-color: rgb(233, 232, 211);
+    font-size: 25px;
+    padding:20px;
+    margin-top: 10px;
+}
+
 </style>
 
 <h1 class = "text-center">F-Society</h1>
@@ -42,7 +50,7 @@
         {% for neighbourhood in neighbourhoods %}
         <div class="col-lg-4">
             <div
-                style="background-color: rgb(250, 246, 246);box-sizing: border-box; margin-top:2%;box-shadow: 0vh 0vh 1vh gainsboro;">
+                style="background-color: rgb(233, 232, 211);box-sizing: border-box; margin-top:2%;box-shadow: 0vh 0vh 1vh gainsboro;">
                 <div class="row" style="padding-top: 1%">
                     <div class="col-md-12">
                         <h4 style="font-weight:600;">Name: <a href="{% url 'view_neighbourhood' id=neighbourhood.id %}" class="text-right"
@@ -58,7 +66,7 @@
                     </div>
                 </div>
                 <div class="">
-                    <a href="">
+                    <a href="{% url 'view_neighbourhood' id=neighbourhood.id %}">
                         <img src="{{neighbourhood.neighbourhood_photo.url}}" class="img-responsive" alt="{{image.neighbourhood_name}}"
                             style="width:100%;width:100%">
                         <div class="overlay">
