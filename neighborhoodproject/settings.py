@@ -13,6 +13,19 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+cloudinary.config( 
+  cloud_name = "drlarkhla", 
+  api_key = "361286985462635", 
+  api_secret = "EwIXx2yhzxXTdIXClBjMCbp1CPg" ,
+  secure = True
+)
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -40,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'neighborhoodapp',
     'bootstrap3',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -78,8 +92,10 @@ WSGI_APPLICATION = 'neighborhoodproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'neighborhood',
+        'USER': 'moringa',
+    'PASSWORD':'Computer757575.',
     }
 }
 
@@ -108,7 +124,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Nairobi'
 
 USE_I18N = True
 
