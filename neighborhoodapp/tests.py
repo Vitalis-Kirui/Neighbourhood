@@ -53,3 +53,28 @@ class NeighbourhoodTest(TestCase):
         self.neighbourhood.delete_hood()
         testsaved = Neighbourhood.objects.all()
         self.assertFalse(len(testsaved) > 0)
+
+class BusinessTest(TestCase): 
+
+    def setUp(self):
+     
+        self.user = User(username="Test", password="testingpassword")
+        self.user.save()
+        self.neighbourhood =  Neighbourhood(neighbourhood_name = "Sambu75", neighbourhood_location= "F-Society N", admin = self.user,neighbourhood_description='Home is best all the time', neighbourhood_photo="neighbourhood75.jpg")
+        self.neighbourhood.save()
+        self.bussiness = Business(user=self.user,business_name="Business", business_neighbourhood=self.neighbourhood,business_email="business@gmail.com", business_description="Business setup")
+        self.bussiness.save()
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.bussiness,Business))
+
+    def test_save_business(self):
+        self.bussiness.save_business()
+        bussiness = Business.objects.all()
+        self.assertTrue(len(bussiness) > 0)
+
+    def test_delete_hood(self):
+        self.bussiness.delete_business()
+        bussiness = Business.objects.all()
+        self.assertFalse(len(bussiness) > 0)
+
