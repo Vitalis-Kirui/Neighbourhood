@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    {% if title %}
+    <title>F-Society - {{title}}</title>
+    {% else %}
+    <title> F-Society </title>
+    {% endif %}
+
+</head>
+
+<body>
+
+    {% block content %} 
+    
+    {%endblock%}
+
+</body>
+
+</html>
