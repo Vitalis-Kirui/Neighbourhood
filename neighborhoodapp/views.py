@@ -17,3 +17,13 @@ def view_neighbourhood(request, id):
     return render(request, 'view-neighbourhood.html',  {
         'neighbourhood': neighbourhood,'business':business,'post': post
     })
+
+def search(request):
+    if 'business' in request.GET and request.GET['business']:
+        business = request.GET.get("business")
+        results = Business.search_business(business)
+        message = f'business'
+        return render(request, 'search.html', {'business': results, 'message': message})
+    else:
+        message = "You haven't searched for anything, please try again"
+    return render(request, 'search.html', {'message': message})
