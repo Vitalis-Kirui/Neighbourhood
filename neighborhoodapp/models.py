@@ -59,3 +59,37 @@ class Profile(models.Model):
 
     def update_profile(cls, id):
         Profile.objects.get(user_id=id)
+
+class Business(models.Model):
+    business_name = models.CharField(max_length=250)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    business_neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
+    business_email = models.CharField(max_length=30)
+    business_description = models.TextField(blank=True)
+
+    def __str__(self):
+        return f'{self.business_name} business'
+
+    def save_business(self):
+        self.save()
+
+    def delete_business(self):
+        self.delete()
+
+    @classmethod
+    def get_business(cls, business_id):
+        business = cls.objects.get(id=business_id)
+        return business
+
+    @classmethod
+    def business_by_id(cls, id):
+        business = Business.objects.filter(id=id)
+        return business
+
+    def update_business(self):
+        name = self.business_name
+        self.business_name = name
+
+    @classmethod
+    def search_business(cls, name):
+        return cls.objects.filter(business_name__icontains=name).all()
