@@ -36,6 +36,45 @@
 <h1 class = "text-center">F-Society</h1>
 <hr>
 
+<div class="container-fluid">
+    <div class="row">
+
+        {% for neighbourhood in neighbourhoods %}
+        <div class="col-lg-4">
+            <div
+                style="background-color: rgb(250, 246, 246);box-sizing: border-box; margin-top:2%;box-shadow: 0vh 0vh 1vh gainsboro;">
+                <div class="row" style="padding-top: 1%">
+                    <div class="col-md-12">
+                        <h4 style="font-weight:600;">Name: <a href="" class="text-right"
+                                style="text-decoration: none;">{{neighbourhood.neighbourhood_name}}
+                                <img src="https://img.icons8.com/color/48/000000/circled-up-right--v1.png"
+                                    style="width:15px;height:auto" />
+                            </a></h4>
+
+                    </div>
+                </div>
+                <div class="row" style="font-size:10pt;">
+                    <div class="col-md-6" style="padding-bottom: 2%;font-weight:600;"> Location: {{neighbourhood.neighbourhood_location}}
+                    </div>
+                </div>
+                <div class="">
+                    <a href="">
+                        <img src="{{neighbourhood.neighbourhood_photo.url}}" class="img-responsive" alt="{{image.neighbourhood_name}}"
+                            style="width:100%;width:100%">
+                        <div class="overlay">
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        {% endfor %}
+
+
+    </div>
+</div>
+
 
 
 <footer class="footer">
