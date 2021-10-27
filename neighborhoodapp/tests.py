@@ -78,3 +78,26 @@ class BusinessTest(TestCase):
         bussiness = Business.objects.all()
         self.assertFalse(len(bussiness) > 0)
 
+class PostTest(TestCase): 
+
+    def setUp(self):
+     
+        self.user = User(username="Test", password="testingpassword")
+        self.user.save()
+        self.neighbourhood =  Neighbourhood(neighbourhood_name = "Sambu75", neighbourhood_location= "F-Society N", admin = self.user,neighbourhood_description='Home is best all the time', neighbourhood_photo="neighbourhood75.jpg")
+        self.neighbourhood.save()
+        self.post = Post(user=self.user,title="User post",image="post.jpg" ,content ="user post", timestamp=datetime.datetime,neighbourhood=self.neighbourhood)
+        self.post.save()
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.post,Post))
+
+    def test_save_post(self):
+        self.post.save_post()
+        post = Post.objects.all()
+        self.assertTrue(len(post) > 0)
+
+    def test_delete_post(self):
+        self.post.delete_post()
+        post = Post.objects.all()
+        self.assertFalse(len(post) > 0)
