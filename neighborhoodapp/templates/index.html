@@ -1,10 +1,46 @@
 {%extends 'base.html'%}
 {% load bootstrap3 %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+
+{% block styles %}
+{% bootstrap_css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+{% endblock %}
 
 {% block content %}
-{{block.super}}
 
-<h1 class='text-center'>F-Society</h1>
+<style>
+    * {
+        font-family: 'Josefin Sans',
+            sans-serif;
+    }
+
+    h1 {
+        font-weight: 600;
+    }
+</style>
+
+<h1 class = "text-center">F-Society</h1>
 <hr>
 
+
+
+<footer class="footer">
+    <p class="text-center">© Kipyegon Kirui Vitalis. All Rights Reserved</p>
+</footer>
 {% endblock %}
+
+</html>
