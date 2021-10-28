@@ -4,7 +4,7 @@ from neighborhoodapp.models import Business, Post, Profile, Neighbourhood
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
-from neighborhoodapp.forms import SignUpForm, UpdateProfileForm, UpdateUserForm, NewNeighbourhoodForm
+from neighborhoodapp.forms import SignUpForm, UpdateProfileForm, UpdateUserForm, NewNeighbourhoodForm, PostForm
 from django.shortcuts import get_object_or_404, render, redirect
 
 # Create your views here.
@@ -84,3 +84,20 @@ def neighbourhood(request):
     else:
         form = NewNeighbourhoodForm()
     return render(request, 'new-neighbourhood.html', {"form": form})
+
+@login_required(login_url='/accounts/login/')
+def new_post(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = current_user
+
+            post.save()
+
+        return redirect('index')
+
+    else:
+        form = PostForm()
+    return render(request, 'new-post.html', {"form": form})
