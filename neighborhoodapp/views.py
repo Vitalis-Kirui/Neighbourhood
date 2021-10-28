@@ -3,12 +3,14 @@ from django.http.response import HttpResponse, HttpResponseRedirect
 from neighborhoodapp.models import Business, Post, Profile, Neighbourhood
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from neighborhoodapp.forms import SignUpForm
 
 # Create your views here.
 def index(request):
     neighbourhoods = Neighbourhood.objects.all()
     return render(request, 'index.html', {"neighbourhoods": neighbourhoods})
 
+@login_required(login_url='/accounts/login/')
 def view_neighbourhood(request, id):
     neighbourhood = Neighbourhood.objects.get(id=id)
     business = Business.objects.filter(business_neighbourhood=id)
@@ -19,6 +21,7 @@ def view_neighbourhood(request, id):
         'neighbourhood': neighbourhood,'business':business,'post': post
     })
 
+@login_required(login_url='/accounts/login/')
 def search(request):
     if 'business' in request.GET and request.GET['business']:
         business = request.GET.get("business")
@@ -44,3 +47,9 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, 'registration/registration_form.html', {'form': form})
+
+@login_required(login_url='/accounts/login/')
+def profile(request):
+    current_user = request.user
+    posts = Post.objects.filter(user=current_user.id).all
+    return render(request, 'registration/profile.html', {"posts": posts})
