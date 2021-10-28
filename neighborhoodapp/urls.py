@@ -11,4 +11,5 @@ urlpatterns=[
     path('update/<id>', views.update_profile, name='update_profile'),
     path('new_neighbourhood/', views.neighbourhood, name='neighbourhood'),
     path('new_post', views.new_post, name='new_post'),
+    path('new_business/', views.new_business, name='new_business'),
 ]
