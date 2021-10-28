@@ -84,4 +84,4 @@ def neighbourhood(request):
 
     else:
         form = NewNeighbourhoodForm()
-    return render(request, 'newhood.html', {"form": form})
+    return render(request, 'new-neighbourhood.html', {"form": form})
