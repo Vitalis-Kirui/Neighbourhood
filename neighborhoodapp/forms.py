@@ -27,3 +27,13 @@ class NewNeighbourhoodForm(forms.ModelForm):
     class Meta:
         model = Neighbourhood
         exclude = ('admin',)
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        exclude = ['title', 'image','content','timestamp']
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        exclude = ('user',)
