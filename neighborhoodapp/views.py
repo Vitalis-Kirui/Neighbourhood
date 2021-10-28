@@ -68,3 +68,20 @@ def update_profile(request, id):
         return HttpResponseRedirect("/profile")
 
     return render(request, "registration/update_profile.html", {"update_profile": update_profile, "update_user": update_user})
+
+@login_required(login_url='/accounts/login/')
+def neighbourhood(request):
+    
+    if request.method == 'POST':
+        form = NewNeighbourhoodForm(request.POST, request.FILES)
+        if form.is_valid():
+            neighbourhood = form.save(commit=False)
+            neighbourhood.admin = request.user
+
+            neighbourhood.save()
+
+        return redirect('index')
+
+    else:
+        form = NewNeighbourhoodForm()
+    return render(request, 'newhood.html', {"form": form})
