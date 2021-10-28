@@ -28,3 +28,19 @@ def search(request):
     else:
         message = "You haven't searched for anything, please try again"
     return render(request, 'search.html', {'message': message})
+
+def signup(request):
+    print('here')
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            user.save()
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=user.username, password=raw_password)
+
+            login(request, user)
+            return redirect('login')
+    else:
+        form = SignUpForm()
+    return render(request, 'registration/registration_form.html', {'form': form})
