@@ -13,4 +13,5 @@ urlpatterns=[
     path('new_post', views.new_post, name='new_post'),
     path('new_business/', views.new_business, name='new_business'),
     path('join_neighbourhood/<id>', views.join_neighbourhood, name='join_neighbourhood'),
+    path('leave_neighbourhood/<id>', views.leave_neighbourhood, name='leave_neighbourhood'),
 ]

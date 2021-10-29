@@ -125,3 +125,9 @@ def join_neighbourhood(request, id):
     request.user.profile.neighbourhood = neighbourhood
     request.user.profile.save()
     return redirect('index')
+
+def leave_neighbourhood(request, id):
+    neighbourhood = get_object_or_404(Neighbourhood, id=id)
+    request.user.profile.neighbourhood = None
+    request.user.profile.save()
+    return redirect('index')
