@@ -74,6 +74,19 @@
                     </a>
                 </div>
 
+                <div style="padding-top:1%;padding-bottom:1%">
+                    {%if request.user.profile.neighbourhood == neighbourhood %}
+                
+                    <a class="btn btn-warning" href="{%url 'leave_neighbourhood' neighbourhood.id%}">Leave Neighbourhood</a>
+                
+                    {%elif not request.user.profile.neighbourhood%}
+                
+                
+                    <a class="btn btn-info" href="{%url 'join_neighbourhood' neighbourhood.id%}">Join Neighbourhood</a>
+                
+                    {%endif%}
+                </div>
+
             </div>
         </div>
 
