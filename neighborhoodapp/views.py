@@ -118,3 +118,10 @@ def new_business(request):
     else:
         form = NewBusinessForm()
     return render(request, 'new-business.html', {"form": form})
+
+@login_required(login_url='/accounts/login/')
+def join_neighbourhood(request, id):
+    neighbourhood = get_object_or_404(Neighbourhood, id=id)
+    request.user.profile.neighbourhood = neighbourhood
+    request.user.profile.save()
+    return redirect('index')
