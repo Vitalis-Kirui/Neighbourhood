@@ -32,16 +32,15 @@
         font-weight: 600;
     }
 
-    .footer{
-    background-color: rgb(233, 232, 211);
-    font-size: 25px;
-    padding:20px;
-    margin-top: 10px;
-}
-
+    .footer {
+        background-color: rgb(233, 232, 211);
+        font-size: 22px;
+        padding: 20px;
+        margin-top: 10px;
+    }
 </style>
 
-<h1 class = "text-center">F-Society</h1>
+<h1 class="text-center">F-Society</h1>
 <hr>
 
 <div class="container-fluid">
@@ -51,39 +50,43 @@
         <div class="col-lg-4">
             <div
                 style="background-color: rgb(233, 232, 211);box-sizing: border-box; margin-top:2%;box-shadow: 0vh 0vh 1vh gainsboro;">
-                <div class="row" style="padding-top: 1%">
-                    <div class="col-md-12">
-                        <h4 style="font-weight:600;">Name: <a href="{% url 'view_neighbourhood' id=neighbourhood.id %}" class="text-right"
-                                style="text-decoration: none;">{{neighbourhood.neighbourhood_name}}
-                                <img src="https://img.icons8.com/color/48/000000/circled-up-right--v1.png"
-                                    style="width:15px;height:auto" />
-                            </a></h4>
 
-                    </div>
-                </div>
-                <div class="row" style="font-size:10pt;">
-                    <div class="col-md-6" style="padding-bottom: 2%;font-weight:600;"> Location: {{neighbourhood.neighbourhood_location}}
-                    </div>
-                </div>
-                <div class="">
-                    <a href="{% url 'view_neighbourhood' id=neighbourhood.id %}">
-                        <img src="{{neighbourhood.neighbourhood_photo.url}}" class="img-responsive" alt="{{image.neighbourhood_name}}"
-                            style="width:100%;width:100%">
-                        <div class="overlay">
+                <div class="about">
+
+                    <div class="row" style="padding-top: 1%">
+                        <div class="col-md-12">
+                            <h4 style="font-weight:600;">Name: <a style="color:rgb(53, 53, 245);"
+                                    href="{% url 'view_neighbourhood' id=neighbourhood.id %}" class="text-right"
+                                    style="text-decoration: none;">{{neighbourhood.neighbourhood_name}}
+                                </a></h4>
+
                         </div>
-                    </a>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6" style="font-weight:600; font-size:18px"> Location: <span
+                                style="color:rgb(53, 53, 245);">{{neighbourhood.neighbourhood_location}}</span>
+                        </div>
+                    </div>
+                    <div class="">
+                        <a href="{% url 'view_neighbourhood' id=neighbourhood.id %}">
+                            <img src="{{neighbourhood.neighbourhood_photo.url}}" class="img-responsive"
+                                alt="{{image.neighbourhood_name}}" style="width:100%;width:100%">
+                        </a>
+                    </div>
+
                 </div>
 
                 <div style="padding-top:1%;padding-bottom:1%">
                     {%if request.user.profile.neighbourhood == neighbourhood %}
-                
-                    <a class="btn btn-warning" href="{%url 'leave_neighbourhood' neighbourhood.id%}">Leave Neighbourhood</a>
-                
+
+                    <a class="btn btn-danger" href="{%url 'leave_neighbourhood' neighbourhood.id%}">Leave
+                        Neighbourhood</a>
+
                     {%elif not request.user.profile.neighbourhood%}
-                
-                
-                    <a class="btn btn-info" href="{%url 'join_neighbourhood' neighbourhood.id%}">Join Neighbourhood</a>
-                
+
+
+                    <a class="btn btn-primary" href="{%url 'join_neighbourhood' neighbourhood.id%}">Join Neighbourhood</a>
+
                     {%endif%}
                 </div>
 

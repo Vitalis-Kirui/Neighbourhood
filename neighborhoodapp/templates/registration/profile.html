@@ -59,22 +59,22 @@
             <div class="media-body ">
                 <div class="row">
                     <div class="col-md-12">
-                        <h3><span style="padding-right: 3%;">{{user.username}} </span><a
+                        <h2><span style="padding-right: 3%;">{{user.username}} </span><a
                                 href="{% url 'update_profile' user.id %}" target="_blank"><button
-                                    class="btn btn-warning btn-">Edit Profile</button></a>
-                        </h3>
+                                    class="btn btn-primary btn-">Edit Profile</button></a>
+                        </h2>
                     </div>
                 </div>
                 <div class="row" style="margin-top:3%">
                     <div class="col-md-12">
-                        <p id="bio"><span style="padding-right: 3%; font-weight: 700;">Bio: </span>{{user.profile.bio}}
+                        <p id="bio"><span style="padding-right: 10px; font-weight: 600;color:brown;">Bio: </span>{{user.profile.bio}}
                         </p>
                     </div>
                 </div>
                 <div class="row" style="margin-top:2%">
 
                     <div class="col-md-12">
-                        <p><span style="padding-right: 3%;  font-weight: 700;">Neighbourhood:
+                        <p><span style="padding-right: 10px;  font-weight: 600;color:brown;">Neighbourhood:
                             </span>{{user.profile.neighbourhood.neighbourhood_name}}
                         </p>
                     </div>
@@ -82,7 +82,7 @@
                 <div class="row" style="margin-top:2%">
 
                     <div class="col-md-12">
-                        <p><span style="padding-right: 3%;  font-weight: 700;">Email: </span>{{user.email}}</p>
+                        <p><span style="padding-right: 10px;  font-weight: 600; color:brown;">Email: </span>{{user.profile.email}}</p>
                         </p>
                     </div>
                 </div>
@@ -91,10 +91,4 @@
     </div>
 </div>
 
-<div class="container" style="margin-bottom: 10%;">
-    <hr>
-    {% for post in posts %}
-
-    {%endfor%}
-</div>
 {%endblock content%}
